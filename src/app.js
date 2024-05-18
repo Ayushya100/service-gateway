@@ -6,6 +6,9 @@ import cookieParser from 'cookie-parser';
 import rateLimit from 'express-rate-limit';
 import { errorHandler, setUserContext } from 'lib-finance-service';
 
+// Routes
+import routes from './routes/index.js';
+
 const app = express();
 
 // Setting up Middlewares
@@ -25,14 +28,15 @@ app.use(express.urlencoded({
 
 app.use(rateLimit({
     windowMs: 10 * 60 * 1000, // 10 minutes max
-    max: 100 // Limit each IP to 100 requests per windowMs
+    max: 1000 // Limit each IP to 100 requests per windowMs
 }));
 
 app.use(cookieParser());
 
-app.use(setUserContext);
+setUserContext(app);
 
 // Global Route
+app.use('*', routes.redirectAPI);
 
 app.use(errorHandler);
 
