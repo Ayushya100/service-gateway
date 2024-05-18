@@ -28,7 +28,7 @@ app.use(express.urlencoded({
 
 app.use(rateLimit({
     windowMs: 10 * 60 * 1000, // 10 minutes max
-    max: 1000 // Limit each IP to 100 requests per windowMs
+    max: 1000 // Limit each IP to 1000 requests per windowMs
 }));
 
 app.use(cookieParser());
