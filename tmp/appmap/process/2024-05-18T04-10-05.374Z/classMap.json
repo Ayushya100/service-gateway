@@ -1,0 +1,44 @@
+[
+  {
+    "name": "mongodb",
+    "type": "package",
+    "children": [
+      {
+        "type": "class",
+        "name": "card_infos",
+        "children": [
+          {
+            "type": "function",
+            "name": "createIndex",
+            "static": false,
+            "location": "mongodb/card_infos:1"
+          }
+        ]
+      },
+      {
+        "type": "class",
+        "name": "user_investment_accounts",
+        "children": [
+          {
+            "type": "function",
+            "name": "createIndex",
+            "static": false,
+            "location": "mongodb/user_investment_accounts:3"
+          }
+        ]
+      },
+      {
+        "type": "class",
+        "name": "users",
+        "children": [
+          {
+            "type": "function",
+            "name": "createIndex",
+            "static": false,
+            "location": "mongodb/users:2"
+          }
+        ]
+      }
+    ]
+  }
+]

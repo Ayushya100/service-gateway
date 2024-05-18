@@ -1,0 +1,41 @@
+{
+  "name": "service-gateway",
+  "version": "1.0.0",
+  "description": "Welcome to the Github repository for **Finance Tracker Service Gateway** - This gateway is responsible for receiving the requests from clients and perform required checks before forwarding the client requests to the appropriate micro-service.\r ---\r **Finance Tracker** - Simplifying Financial Management for Everyone!",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/index.js",
+    "start-appmap": "npx appmap-node nodemon src/index.js",
+    "start": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ayushya100/service-gateway.git"
+  },
+  "keywords": [
+    "javascript",
+    "nodejs",
+    "service-gateway"
+  ],
+  "author": "Ayushya Jaiswal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ayushya100/service-gateway/issues"
+  },
+  "homepage": "https://github.com/Ayushya100/service-gateway#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.3.4"
+  }
+}
