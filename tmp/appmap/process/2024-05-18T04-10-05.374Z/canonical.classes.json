@@ -1,0 +1,5 @@
+[
+  "mongodb/card_infos",
+  "mongodb/user_investment_accounts",
+  "mongodb/users"
+]

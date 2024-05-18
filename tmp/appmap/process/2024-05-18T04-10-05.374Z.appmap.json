@@ -1,0 +1,409 @@
+{
+  "events": [
+    {
+      "event": "call",
+      "id": 1,
+      "thread_id": 0,
+      "method_id": "createIndex",
+      "static": false,
+      "receiver": {
+        "class": "Collection",
+        "value": "[Collection card_infos]",
+        "object_id": 1
+      },
+      "parameters": [
+        {
+          "class": "Object",
+          "properties": [
+            {
+              "name": "token",
+              "class": "Number"
+            }
+          ],
+          "value": "{ token: 1 }",
+          "object_id": 2,
+          "name": "indexSpec"
+        },
+        {
+          "class": "Object",
+          "properties": [
+            {
+              "name": "unique",
+              "class": "Boolean"
+            },
+            {
+              "name": "background",
+              "class": "Boolean"
+            }
+          ],
+          "value": "{ unique: true, background: true }",
+          "object_id": 3,
+          "name": "options"
+        }
+      ],
+      "defined_class": "card_infos",
+      "lineno": 1,
+      "path": "mongodb/card_infos"
+    },
+    {
+      "event": "return",
+      "thread_id": 0,
+      "id": 2,
+      "parent_id": 1,
+      "return_value": {
+        "class": "Promise<String>",
+        "value": "Promise {\n  'token_1',\n  [Symbol(async_id_symbol)]: 1041,\n  [Symbol(trigger_async_id_symbol)]: 1032\n}",
+        "object_id": 4
+      },
+      "elapsed": 0.11235930002294481
+    },
+    {
+      "event": "call",
+      "id": 3,
+      "thread_id": 0,
+      "method_id": "createIndex",
+      "static": false,
+      "receiver": {
+        "class": "Collection",
+        "value": "[Collection users]",
+        "object_id": 5
+      },
+      "parameters": [
+        {
+          "class": "Object",
+          "properties": [
+            {
+              "name": "userName",
+              "class": "Number"
+            }
+          ],
+          "value": "{ userName: 1 }",
+          "object_id": 6,
+          "name": "indexSpec"
+        },
+        {
+          "class": "Object",
+          "properties": [
+            {
+              "name": "unique",
+              "class": "Boolean"
+            },
+            {
+              "name": "background",
+              "class": "Boolean"
+            }
+          ],
+          "value": "{ unique: true, background: true }",
+          "object_id": 7,
+          "name": "options"
+        }
+      ],
+      "defined_class": "users",
+      "lineno": 2,
+      "path": "mongodb/users"
+    },
+    {
+      "event": "return",
+      "thread_id": 0,
+      "id": 4,
+      "parent_id": 3,
+      "return_value": {
+        "class": "Promise<String>",
+        "value": "Promise {\n  'userName_1',\n  [Symbol(async_id_symbol)]: 1215,\n  [Symbol(trigger_async_id_symbol)]: 1207\n}",
+        "object_id": 8
+      },
+      "elapsed": 0.11113999999361113
+    },
+    {
+      "event": "call",
+      "id": 5,
+      "thread_id": 0,
+      "method_id": "createIndex",
+      "static": false,
+      "receiver": {
+        "class": "Collection",
+        "value": "[Collection user_investment_accounts]",
+        "object_id": 9
+      },
+      "parameters": [
+        {
+          "class": "Object",
+          "properties": [
+            {
+              "name": "token",
+              "class": "Number"
+            }
+          ],
+          "value": "{ token: 1 }",
+          "object_id": 10,
+          "name": "indexSpec"
+        },
+        {
+          "class": "Object",
+          "properties": [
+            {
+              "name": "unique",
+              "class": "Boolean"
+            },
+            {
+              "name": "background",
+              "class": "Boolean"
+            }
+          ],
+          "value": "{ unique: true, background: true }",
+          "object_id": 11,
+          "name": "options"
+        }
+      ],
+      "defined_class": "user_investment_accounts",
+      "lineno": 3,
+      "path": "mongodb/user_investment_accounts"
+    },
+    {
+      "event": "return",
+      "thread_id": 0,
+      "id": 6,
+      "parent_id": 5,
+      "return_value": {
+        "class": "Promise<String>",
+        "value": "Promise {\n  'token_1',\n  [Symbol(async_id_symbol)]: 1750,\n  [Symbol(trigger_async_id_symbol)]: 1742\n}",
+        "object_id": 12
+      },
+      "elapsed": 0.04679920000489801
+    },
+    {
+      "event": "call",
+      "id": 7,
+      "thread_id": 0,
+      "method_id": "createIndex",
+      "static": false,
+      "receiver": {
+        "class": "Collection",
+        "value": "[Collection card_infos]",
+        "object_id": 1
+      },
+      "parameters": [
+        {
+          "class": "Object",
+          "properties": [
+            {
+              "name": "cardNumber",
+              "class": "Number"
+            }
+          ],
+          "value": "{ cardNumber: 1 }",
+          "object_id": 13,
+          "name": "indexSpec"
+        },
+        {
+          "class": "Object",
+          "properties": [
+            {
+              "name": "unique",
+              "class": "Boolean"
+            },
+            {
+              "name": "background",
+              "class": "Boolean"
+            }
+          ],
+          "value": "{ unique: true, background: true }",
+          "object_id": 14,
+          "name": "options"
+        }
+      ],
+      "defined_class": "card_infos",
+      "lineno": 1,
+      "path": "mongodb/card_infos"
+    },
+    {
+      "event": "return",
+      "thread_id": 0,
+      "id": 8,
+      "parent_id": 7,
+      "return_value": {
+        "class": "Promise<String>",
+        "value": "Promise {\n  'cardNumber_1',\n  [Symbol(async_id_symbol)]: 1960,\n  [Symbol(trigger_async_id_symbol)]: 1048\n}",
+        "object_id": 15
+      },
+      "elapsed": 0.03118029999313876
+    },
+    {
+      "event": "call",
+      "id": 9,
+      "thread_id": 0,
+      "method_id": "createIndex",
+      "static": false,
+      "receiver": {
+        "class": "Collection",
+        "value": "[Collection users]",
+        "object_id": 5
+      },
+      "parameters": [
+        {
+          "class": "Object",
+          "properties": [
+            {
+              "name": "emailId",
+              "class": "Number"
+            }
+          ],
+          "value": "{ emailId: 1 }",
+          "object_id": 16,
+          "name": "indexSpec"
+        },
+        {
+          "class": "Object",
+          "properties": [
+            {
+              "name": "unique",
+              "class": "Boolean"
+            },
+            {
+              "name": "background",
+              "class": "Boolean"
+            }
+          ],
+          "value": "{ unique: true, background: true }",
+          "object_id": 17,
+          "name": "options"
+        }
+      ],
+      "defined_class": "users",
+      "lineno": 2,
+      "path": "mongodb/users"
+    },
+    {
+      "event": "return",
+      "thread_id": 0,
+      "id": 10,
+      "parent_id": 9,
+      "return_value": {
+        "class": "Promise<String>",
+        "value": "Promise {\n  'emailId_1',\n  [Symbol(async_id_symbol)]: 2112,\n  [Symbol(trigger_async_id_symbol)]: 1222\n}",
+        "object_id": 18
+      },
+      "elapsed": 0.019440999982180074
+    },
+    {
+      "event": "call",
+      "id": 11,
+      "thread_id": 0,
+      "method_id": "createIndex",
+      "static": false,
+      "receiver": {
+        "class": "Collection",
+        "value": "[Collection user_investment_accounts]",
+        "object_id": 9
+      },
+      "parameters": [
+        {
+          "class": "Object",
+          "properties": [
+            {
+              "name": "accountName",
+              "class": "Number"
+            }
+          ],
+          "value": "{ accountName: 1 }",
+          "object_id": 19,
+          "name": "indexSpec"
+        },
+        {
+          "class": "Object",
+          "properties": [
+            {
+              "name": "unique",
+              "class": "Boolean"
+            },
+            {
+              "name": "background",
+              "class": "Boolean"
+            }
+          ],
+          "value": "{ unique: true, background: true }",
+          "object_id": 20,
+          "name": "options"
+        }
+      ],
+      "defined_class": "user_investment_accounts",
+      "lineno": 3,
+      "path": "mongodb/user_investment_accounts"
+    },
+    {
+      "event": "return",
+      "thread_id": 0,
+      "id": 12,
+      "parent_id": 11,
+      "return_value": {
+        "class": "Promise<String>",
+        "value": "Promise {\n  'accountName_1',\n  [Symbol(async_id_symbol)]: 2179,\n  [Symbol(trigger_async_id_symbol)]: 1757\n}",
+        "object_id": 21
+      },
+      "elapsed": 0.014877800014801323
+    }
+  ],
+  "version": "1.12",
+  "metadata": {
+    "client": {
+      "name": "appmap-node",
+      "version": "2.21.1",
+      "url": "https://github.com/getappmap/appmap-node"
+    },
+    "language": {
+      "name": "javascript",
+      "engine": "Node.js",
+      "version": "v16.20.1"
+    },
+    "app": "service-gateway",
+    "recorder": {
+      "type": "process",
+      "name": "process"
+    },
+    "name": "2024-05-18T04:10:05.374Z"
+  },
+  "classMap": [
+    {
+      "name": "mongodb",
+      "type": "package",
+      "children": [
+        {
+          "type": "class",
+          "name": "card_infos",
+          "children": [
+            {
+              "type": "function",
+              "name": "createIndex",
+              "static": false,
+              "location": "mongodb/card_infos:1"
+            }
+          ]
+        },
+        {
+          "type": "class",
+          "name": "user_investment_accounts",
+          "children": [
+            {
+              "type": "function",
+              "name": "createIndex",
+              "static": false,
+              "location": "mongodb/user_investment_accounts:3"
+            }
+          ]
+        },
+        {
+          "type": "class",
+          "name": "users",
+          "children": [
+            {
+              "type": "function",
+              "name": "createIndex",
+              "static": false,
+              "location": "mongodb/users:2"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
