@@ -118,6 +118,6 @@ dist
 .pnp.*
 
 # appmap
-tmp/appmap/requests
+tmp/appmap
 
 # End of https://mrkandreev.name/snippets/gitignore-generator/#Node
