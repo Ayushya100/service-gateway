@@ -25,7 +25,7 @@ const sendRequest = async(path, method, payload, accessToken = null, jsonData = 
             url: baseUrl,
             baseUrl: baseUrl,
             data: payload,
-            timeout: 20000,
+            timeout: 50000,
             headers: { accept: 'application/json, text/plain, */*', 'content-type': 'application/json' },
             responseType: 'json'
         };
