@@ -35,9 +35,7 @@ const redirectAPI = async(req, res, next) => {
         let isAuth = endpointFound;
         if (endpointFound.data.validations.includes('requiresAuth')) {
             log.info('Call controller function to check if user is authenticated');
-            verifyToken(process.env.ACCESS_TOKEN_KEY)(req, res, (result) => {
-                isAuth = result;
-            });
+            verifyToken(process.env.ACCESS_TOKEN_KEY);
         }
         if(!isAuth.isValid) {
             throw isAuth;
