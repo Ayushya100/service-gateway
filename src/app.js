@@ -5,11 +5,13 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import rateLimit from 'express-rate-limit';
 import { errorHandler, setUserContext } from 'lib-finance-service';
+import multer from 'multer';
 
 // Routes
 import routes from './routes/index.js';
 
 const app = express();
+const upload = multer();
 
 // Setting up Middlewares
 app.use(cors({
@@ -32,6 +34,7 @@ app.use(rateLimit({
 }));
 
 app.use(cookieParser());
+app.use(upload.any());
 
 setUserContext(app);
 

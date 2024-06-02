@@ -2,6 +2,7 @@
 
 import { logger } from 'lib-finance-service';
 import axios from 'axios';
+import FormData from 'form-data';
 
 const header = 'util: request-external-svc';
 const log = logger(header);
@@ -15,7 +16,7 @@ const initializeSvc = (port) => {
     log.info('External service config completed');
 }
 
-const sendRequest = async(path, method, payload, accessToken = null, jsonData = null) => {
+const sendRequest = async(path, method, payload, accessToken = null, jsonData = null, files = null) => {
     log.info('Execution of external service request started');
 
     try {
@@ -29,6 +30,29 @@ const sendRequest = async(path, method, payload, accessToken = null, jsonData = 
             headers: { accept: 'application/json, text/plain, */*', 'content-type': 'application/json' },
             responseType: 'json'
         };
+
+        if(files && files.length > 0) {
+            const formData = new FormData();
+            
+            for (const file of files) {
+                formData.append(file.fieldname, file.buffer, {
+                    filename: file.originalname,
+                    contentType: file.mimetype
+                });
+            }
+            
+            for (let key in payload) {
+                if (payload.hasOwnProperty(key)) {
+                    formData.append(key, payload[key]);
+                }
+            }
+
+            options.headers = {
+                'Content-Type': 'multipart/form-data',
+                ...formData.getHeaders()
+            };
+            options.data = formData;
+        }
 
         if (accessToken) {
             options.headers = { ...options.headers, Authorization: 'Bearer ' + accessToken };
@@ -63,9 +87,9 @@ const sendRequest = async(path, method, payload, accessToken = null, jsonData = 
     }
 }
 
-const callExternalSvc = async(port, originalUrl, method, payload, accessToken) => {
+const callExternalSvc = async(port, originalUrl, method, payload, accessToken, files) => {
     initializeSvc(port);
-    return await sendRequest(originalUrl, method, payload, accessToken);
+    return await sendRequest(originalUrl, method, payload, accessToken, null, files);
 }
 
 export default callExternalSvc;

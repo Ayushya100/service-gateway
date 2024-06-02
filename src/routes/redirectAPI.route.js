@@ -17,6 +17,7 @@ const redirectAPI = async(req, res, next) => {
         const payload = req.body;
         const accessToken = req.cookies?.accessToken || req.header('Authorization')?.replace('Bearer ', '');
         const method = req.method;
+        const files = req.files;
 
         log.info('Call controller funciton to build api endpoint to check');
         const toCheckAPI = buildApiToCheck(req.originalUrl);
@@ -40,9 +41,9 @@ const redirectAPI = async(req, res, next) => {
         if(!isAuth.isValid) {
             throw isAuth;
         }
-        
+                
         log.info('Call external service function to send the request to desired service');
-        const externalSvcRes = await callExternalSvc(isAuth.data.port, originalUrl, method, payload, accessToken);
+        const externalSvcRes = await callExternalSvc(isAuth.data.port, originalUrl, method, payload, accessToken, files);
         if (!externalSvcRes.isValid) {
             throw externalSvcRes;
         }
