@@ -2,7 +2,7 @@
 
 import { Types } from 'mongoose';
 import { logger } from 'lib-finance-service';
-import { findPathDetails } from '../db/dbQueries.js';
+import { findPathDetails, findServiceDetails } from '../db/dbQueries.js';
 
 const header = 'controller: redirect-svc';
 const log = logger(header);
@@ -29,8 +29,10 @@ const buildApiToCheck = (originalUrl) => {
         endpoint = endpoint.split('?')[0];
     }
 
+    const tokenPattern = /^[a-zA-Z0-9]{128}$/;
+
     let endpointArr = endpoint.split('/');
-    let api = endpointArr.map(item => Types.ObjectId.isValid(item) ? '.*' : item).join('\/');
+    let api = endpointArr.map(item => Types.ObjectId.isValid(item) || tokenPattern.test(item) ? '.*' : item).join('\/');
 
     log.info('Successfully converted incoming endpoint into desired endpoint and svc to check');
     return {
@@ -41,13 +43,14 @@ const buildApiToCheck = (originalUrl) => {
     };
 }
 
-const checkIfEndpointAvailable = async(svc, endpoint, method) => {
+const checkIfEndpointAvailable = async(svc, endpoint, method, protocol) => {
     try {
         log.info('Execution for checking if requested endpoint is registered in a system');
         log.info('Call db query to check if the endpoing present in a system or not');
-        const endpointFound = await findPathDetails(svc, endpoint, method);
+        const endpointDetails = await findPathDetails(svc, endpoint, method);
+        const serviceDetails = await findServiceDetails(svc, process.env.NODE_ENV, protocol)
 
-        if (!endpointFound) {
+        if (!endpointDetails || !serviceDetails) {
             log.error('Requested endpoint not found in a system');
             return {
                 resType: 'NOT_FOUND',
@@ -60,7 +63,7 @@ const checkIfEndpointAvailable = async(svc, endpoint, method) => {
         return {
             resType: 'SUCCESS',
             resMsg: 'VALIDATION SUCCESSFULL',
-            data: endpointFound,
+            data: {endpointDetails, serviceDetails},
             isValid: true
         };
     } catch (err) {

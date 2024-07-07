@@ -1,7 +1,7 @@
 'use strict';
 
 // Import DB Template
-import { serviceRoutesTemplate } from 'lib-finance-service';
+import { serviceConfigTemplate, serviceRoutesTemplate } from 'lib-finance-service';
 
 const findPathDetails = async(svc, path, method) => {
     const query = {
@@ -16,6 +16,17 @@ const findPathDetails = async(svc, path, method) => {
     return await db.findOne(query, null);
 }
 
+const findServiceDetails = async(svc, environment, protocol) => {
+    const query = {
+        microservice: svc,
+        environment: environment,
+        protocol: protocol
+    };
+    const db = new serviceConfigTemplate();
+    return await db.findOne(query, null);
+}
+
 export {
-    findPathDetails
+    findPathDetails,
+    findServiceDetails
 };
