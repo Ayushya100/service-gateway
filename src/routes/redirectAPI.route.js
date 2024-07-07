@@ -28,22 +28,22 @@ const redirectAPI = async(req, res, next) => {
         const {originalUrl, svc, api} = toCheckAPI.data;
 
         log.info('Call controller function to check if requested endpoint exists in a system');
-        const endpointFound = await checkIfEndpointAvailable(svc, api, method);
-        if (!endpointFound.isValid) {
-            throw endpointFound;
+        const endpoint = await checkIfEndpointAvailable(svc, api, method, req.protocol);
+        if (!endpoint.isValid) {
+            throw endpoint;
         }
 
-        let isAuth = endpointFound;
-        if (endpointFound.data.validations.includes('requiresAuth')) {
+        let isAuth = endpoint;
+        if (endpoint.data.endpointDetails.validations.includes('requiresAuth')) {
             log.info('Call controller function to check if user is authenticated');
             verifyToken(process.env.ACCESS_TOKEN_KEY);
         }
         if(!isAuth.isValid) {
             throw isAuth;
         }
-                
+
         log.info('Call external service function to send the request to desired service');
-        const externalSvcRes = await callExternalSvc(isAuth.data.port, originalUrl, method, payload, accessToken, files);
+        const externalSvcRes = await callExternalSvc(req.protocol, isAuth.data.serviceDetails.port, originalUrl, method, payload, accessToken, files);
         if (!externalSvcRes.isValid) {
             throw externalSvcRes;
         }

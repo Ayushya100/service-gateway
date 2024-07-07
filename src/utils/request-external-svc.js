@@ -3,16 +3,22 @@
 import { logger } from 'lib-finance-service';
 import axios from 'axios';
 import FormData from 'form-data';
+import https from 'https';
 
 const header = 'util: request-external-svc';
 const log = logger(header);
 
 let externalSvcConfig = {};
 
-const initializeSvc = (port) => {
+const initializeSvc = (protocol, port) => {
     log.info('External service config started');
-    const host = process.env.NODE_ENV == 'dev' ? `http://localhost:${port}` : ``;
+    const host = process.env.NODE_ENV == 'dev' ? `${protocol}://localhost:${port}` : ``;
+    const agent = process.env.NODE_ENV == 'dev' && protocol === 'https' ? new https.Agent({  
+        rejectUnauthorized: false
+    }) : null;
+
     externalSvcConfig.host = host;
+    externalSvcConfig.agent = agent;
     log.info('External service config completed');
 }
 
@@ -57,6 +63,9 @@ const sendRequest = async(path, method, payload, accessToken = null, jsonData = 
         if (accessToken) {
             options.headers = { ...options.headers, Authorization: 'Bearer ' + accessToken };
         }
+        if (externalSvcConfig.agent) {
+            options.httpsAgent = externalSvcConfig.agent;
+        }
 
         let response;
         await axios(options).then(res => {
@@ -87,8 +96,8 @@ const sendRequest = async(path, method, payload, accessToken = null, jsonData = 
     }
 }
 
-const callExternalSvc = async(port, originalUrl, method, payload, accessToken, files) => {
-    initializeSvc(port);
+const callExternalSvc = async(protocol, port, originalUrl, method, payload, accessToken, files) => {
+    initializeSvc(protocol, port);
     return await sendRequest(originalUrl, method, payload, accessToken, null, files);
 }
 
